@@ -1,12 +1,9 @@
-#include "Watchy_7_SEG.h"
+#include "Watchy_DOS.h"
 
-Watchy7SEG watchy;
+WatchyDOS watchy;
 
 void setup(){
   watchy.init();
 }
 
 void loop(){}
-
-
-
