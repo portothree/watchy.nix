@@ -26,5 +26,5 @@ void WatchyDOS::drawWatchFace(){
     display.println("  4 files 563 bytes");
     display.println("  2048 bytes free");
     display.println(" ");
-    display.println("porto@server:~$");
+    display.println("[porto@server:~]$");
 }
