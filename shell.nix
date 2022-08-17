@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> { } }:
 
-let udevRules = ./watchy-usb.rules;
+let udevRules = ./misc/watchy-usb.rules;
 in pkgs.mkShell {
   buildInputs = with pkgs; [ platformio ];
   shellHook = ''
