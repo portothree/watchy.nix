@@ -1,21 +1,21 @@
 { pkgs ? import <nixpkgs> { } }:
 
 let
-  watchy-usb-rules = pkgs.stdenv.mkDerivation {
-    name = "watchy-usb-rules";
+  watchy-udev-rules = pkgs.stdenv.mkDerivation {
+    name = "watchy-udev-rules";
     rules = pkgs.writeTextFile {
-      name = "50-watchy-usb-rules.rules";
-      text = builtins.readFile ./misc/watchy-usb.rules;
+      name = "99-watchy-udev.rules";
+      text = builtins.readFile ./misc/99-watchy-udev.rules;
     };
     buildCommand = ''
       mkdir -p $out/etc/udev/rules.d
-      cp $rules $out/etc/udev/rules.d/50-watchy-usb.rules
+      cp $rules $out/etc/udev/rules.d/99-watchy-udev.rules
     '';
   };
   fhs = pkgs.buildFHSUserEnv {
-    name = "watchy-usb";
+    name = "watchy-env";
     targetPkgs = pkgs:
-      ((with pkgs; [ udev platformio avrdude ]) ++ [ watchy-usb-rules ]);
+      ((with pkgs; [ udev platformio avrdude ]) ++ [ watchy-udev-rules ]);
     runScript = "bash";
   };
 in fhs.env
